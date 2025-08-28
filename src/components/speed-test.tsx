@@ -139,7 +139,7 @@ export function SpeedTest() {
         <>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 font-headline">Measure Your Network Performance</h2>
             <p className="max-w-xl text-muted-foreground md:text-lg mb-8">Click the button below to start the internet speed test.</p>
-            <Button onClick={startTest} size="lg" className="h-24 w-24 rounded-full text-2xl font-bold shadow-2xl hover:scale-105 transition-transform duration-300">
+            <Button onClick={startTest} size="lg" className="h-24 w-24 rounded-full text-2xl font-bold shadow-2xl hover:scale-105 transition-transform duration-300 bg-blue-500 hover:bg-blue-600 text-white">
                 GO
             </Button>
         </>

@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Timer, ArrowDownToLine, ArrowUpFromLine, Network, RefreshCw } from "lucide-react";
+import { Timer, ArrowDownToLine, ArrowUpFromLine, RefreshCw } from "lucide-react";
 
 type TestState = "idle" | "ping" | "download" | "upload" | "finished";
 
@@ -21,7 +21,6 @@ export function SpeedTest() {
   const [uploadSpeed, setUploadSpeed] = useState<number>(0);
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<{ ping: number; download: number; upload: number } | null>(null);
-  const [ipAddress, setIpAddress] = useState("8.8.8.8");
 
   const isTesting = useMemo(() => testState !== "idle" && testState !== "finished", [testState]);
 
@@ -164,22 +163,6 @@ export function SpeedTest() {
         {renderMetricCard(<ArrowUpFromLine className="h-5 w-s5 text-muted-foreground" />, "Upload", uploadSpeed.toFixed(2), "Mbps", testState === "upload")}
       </div>
       
-      {(testState === 'idle' || testState === 'finished') && (
-        <div className="w-full text-center flex flex-col items-center gap-4">
-            <Card className="w-full max-w-xs">
-                <CardHeader>
-                    <CardTitle className="flex items-center justify-center gap-2 text-base font-headline">
-                        <Network className="h-5 w-5 text-muted-foreground" />
-                        Your IP Address
-                    </CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-2xl font-mono">{ipAddress}</p>
-                </CardContent>
-            </Card>
-        </div>
-      )}
-
       {testState === 'finished' && (
          <Button onClick={startTest} size="lg" className="mt-4">
             <RefreshCw className="mr-2 h-4 w-4"/>

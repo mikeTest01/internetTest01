@@ -8,12 +8,12 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   "apiKey": "mock-api-key",
-  "authDomain": "netgauge-ey99d.firebaseapp.com",
-  "projectId": "netgauge-ey99d",
-  "storageBucket": "netgauge-ey99d.appspot.com",
-  "messagingSenderId": "1005297371052",
-  "appId": "1:1005297371052:web:65a50a113a30a7c4636f32",
-  "measurementId": "G-50012W39YF"
+  "authDomain": "test01-e3105.firebaseapp.com",
+  "projectId": "test01-e3105",
+  "storageBucket": "test01-e3105.appspot.com",
+  "messagingSenderId": "858252199613",
+  "appId": "1:858252199613:web:9324b33535359a1e05d9e9",
+  "measurementId": "G-L0E6Y3S0M4"
 };
 
 // Initialize Firebase

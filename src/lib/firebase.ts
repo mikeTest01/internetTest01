@@ -7,7 +7,9 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  "apiKey": "mock-api-key",
+  // gauge key "apiKey": "AIzaSyCDG-m4ZpclOQ8mu6ktr6IbQrh4aoLAXhU",
+  // test key
+  "apiKey": "AIzaSyBhcx_af1dRKAR9_2YUqnOvqibpa9UhbeQ",
   "authDomain": "test01-e3105.firebaseapp.com",
   "projectId": "test01-e3105",
   "storageBucket": "test01-e3105.appspot.com",

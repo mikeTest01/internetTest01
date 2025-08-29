@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, signOut, User, getRedirectResult } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -14,17 +14,32 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { LogIn, LogOut, User as UserIcon } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 export function AuthButton() {
   const [user, setUser] = useState<User | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
 
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result && result.user) {
+          toast({
+            title: "Signed In",
+            description: `Welcome back, ${result.user.displayName}!`,
+          })
+        }
+      })
+      .catch((error) => {
+        console.error('Error getting redirect result', error);
+      });
+
     return () => unsubscribe();
-  }, []);
+  }, [toast]);
 
   const handleSignIn = async () => {
     const provider = new GoogleAuthProvider();
@@ -38,6 +53,10 @@ export function AuthButton() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      toast({
+        title: "Signed Out",
+        description: "You have been successfully signed out.",
+      })
     } catch (error) {
       console.error('Error signing out', error);
     }

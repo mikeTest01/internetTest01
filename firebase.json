@@ -4,12 +4,7 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-
-    "src": "icon-192x192.png",
-    "type": "image/png",
-  "sizes": "192x192"
-
+      "**/node_modules/**"
     ]
   }
 }

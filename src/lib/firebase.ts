@@ -10,7 +10,7 @@ const firebaseConfig = {
   // gauge key "apiKey": "AIzaSyCDG-m4ZpclOQ8mu6ktr6IbQrh4aoLAXhU",
   // test key
   "apiKey": "AIzaSyBhcx_af1dRKAR9_2YUqnOvqibpa9UhbeQ",
-  "authDomain": "test01-e3105.firebaseapp.com",
+  //"authDomain": "test01-e3105.firebaseapp.com",
   "projectId": "test01-e3105",
   "storageBucket": "test01-e3105.appspot.com",
   "messagingSenderId": "858252199613",

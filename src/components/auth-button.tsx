@@ -35,7 +35,11 @@ export function AuthButton() {
         }
       })
       .catch((error) => {
-        console.error('Error getting redirect result', error);
+        // This can happen if there's no redirect result, which is normal on initial page load.
+        // We log other errors for debugging.
+        if (error.code !== 'auth/no-redirect-operation') {
+          console.error('Error getting redirect result', error);
+        }
       });
 
     return () => unsubscribe();
@@ -47,6 +51,11 @@ export function AuthButton() {
       await signInWithRedirect(auth, provider);
     } catch (error) {
       console.error('Error signing in with Google', error);
+      toast({
+        title: "Sign-in Error",
+        description: "Could not start the sign-in process. Please try again.",
+        variant: "destructive"
+      })
     }
   };
 
@@ -59,6 +68,11 @@ export function AuthButton() {
       })
     } catch (error) {
       console.error('Error signing out', error);
+      toast({
+        title: "Sign-out Error",
+        description: "Could not sign out. Please try again.",
+        variant: "destructive"
+      })
     }
   };
 
